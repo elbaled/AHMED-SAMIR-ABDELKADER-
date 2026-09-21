@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function admin(){return request.auth!=null && request.auth.uid=="bJbTUeWA8wV7KXZrfg0zRGlIWg62";}
+  match /projects/{id}{allow read:true;allow create,update,delete:if admin();}
+  match /certificates/{id}{allow read:true;allow create,update,delete:if admin();}
+  match /skills/{id}{allow read:true;allow create,update,delete:if admin();}
+  match /profile/{id}{allow read:true;allow create,update,delete:if admin();}
+ }
+}
